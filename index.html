@@ -47,7 +47,7 @@
     .then(data => getData(data))
 
 function getData(allInfo){
-   const country = allInfo[4];
+   const country = allInfo[0];
    const active = country.active;
    const countryName = country.countryRegion;
    const confirmed = country.confirmed;
@@ -62,10 +62,6 @@ function getData(allInfo){
 //    console.log('Confirmed case: ' ,confirmed);
 //    console.log('Total Deaths ' ,deaths);
         
-        setTimeout(function(){
-        let i = 0;
-        document.getElementById('confirmedCase').innerText = i+1;
-        }, 5000);
     }
 
 
