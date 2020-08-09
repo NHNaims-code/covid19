@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <h1>covid19 traking</h1>
+    </header>
+    <main>
+
+            <div style="width: 100%; padding: 5px;" class="bg-success text-center text-white">
+                <h3 id="countryName">Country Name</h3>
+            </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <button type="button" class="btn-lg btn btn-primary">
+                    Active Cases
+                    <span id="activeCase" class="badge badge-light">1520</span>
+                </button>
+            </div>
+            <div class="col-md-4 text-center">
+                <button type="button" class="btn-lg btn btn-warning">
+                    Confirmed Cases
+                    <span id="confirmedCase" class="badge badge-light">1520</span>
+                </button>
+            </div>
+            <div class="col-md-4 text-center">
+                <button type="button" class="btn-lg btn btn-danger">
+                    Total Deaths
+                    <span id="totalDeath" class="badge badge-light">1520</span>
+                </button>
+            </div>
+        </div>
+    </main>
+<script>
+    
+
+
+
+    fetch('https://covid19.mathdro.id/api/confirmed')
+    .then(data => data.json())
+    .then(data => getData(data))
+
+function getData(allInfo){
+   const country = allInfo[4];
+   const active = country.active;
+   const countryName = country.countryRegion;
+   const confirmed = country.confirmed;
+   const deaths = country.deaths;
+
+   document.getElementById('countryName').innerText = countryName;
+   document.getElementById('confirmedCase').innerText = confirmed;
+   document.getElementById('totalDeath').innerText = deaths;
+   document.getElementById('activeCase').innerText = active;
+//    console.log('Country Name :', countryName);
+//    console.log('Active case: ' ,active);
+//    console.log('Confirmed case: ' ,confirmed);
+//    console.log('Total Deaths ' ,deaths);
+        
+        setTimeout(function(){
+        let i = 0;
+        document.getElementById('confirmedCase').innerText = i+1;
+        }, 5000);
+    }
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
